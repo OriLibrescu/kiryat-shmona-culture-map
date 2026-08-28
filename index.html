@@ -1,0 +1,1042 @@
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<title>מפת התרבות של קריית שמונה</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="מפת השחקנים, שותפי ההון והנכסים של שדה התרבות בקריית שמונה, מול היעדים, האומדנים והמדדים של התוכנית העירונית">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='47'%20fill='%23702E91'/%3E%3Ctext%20x='50'%20y='67'%20font-size='50'%20text-anchor='middle'%3E%F0%9F%97%BA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@700;900&display=swap">
+
+<style>
+:root{
+  --ground:#FFFFFF; --surface:#FFFFFF; --surface-2:#F6F2F8; --surface-3:#EFE9F3;
+  --ink:#241C2E; --ink-2:#5A5068; --ink-3:#8C8399;
+  --rule:#E6DFEC; --rule-2:#F0EAF4;
+  --brand:#702E91; --brand-soft:#9B6FB8; --brand-wash:#F3ECF7;
+  --teal:#009A87; --teal-soft:#43BFB6;
+  --z-south:#DE7412; --z-center:#D4006F; --z-campus:#009A87; --z-telhai:#6F9E1F;
+  --bar-off:#E9E2EE;
+  --map-paper:#F7F4F2; --map-farm:#EEF0E6; --map-green:#DEE9D2; --map-built:#EDE8EE;
+  --map-indus:#E7E4EA; --map-water:#8FBCD4; --map-road:#C9BFCF; --map-road2:#DCD4E0; --map-street:#E8E2EC;
+  --shadow:0 1px 2px rgba(36,28,46,.05),0 10px 30px rgba(36,28,46,.07);
+  --go:#218749; --maybe:#E8891B; --out:#C93A29;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#161020; --surface:#1E1729; --surface-2:#261E33; --surface-3:#2E253C;
+  --ink:#EFE9F5; --ink-2:#B0A5BE; --ink-3:#847A93;
+  --rule:#332A42; --rule-2:#2A2237;
+  --brand:#C79BE4; --brand-soft:#9B6FB8; --brand-wash:#2A2039;
+  --teal:#4FD0BC; --teal-soft:#43BFB6;
+  --z-south:#F59B47; --z-center:#FF5FAE; --z-campus:#4FD0BC; --z-telhai:#A8D24E;
+  --bar-off:#332A42;
+  --map-paper:#141021; --map-farm:#1B1B26; --map-green:#1D2E26; --map-built:#272033;
+  --map-indus:#2C2537; --map-water:#4E7E9B; --map-road:#5A5069; --map-road2:#3D3450; --map-street:#2F2740;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  --go:#4FC97A; --maybe:#F0A94B; --out:#F2705F;
+}}
+:root[data-theme="dark"]{
+  --ground:#161020; --surface:#1E1729; --surface-2:#261E33; --surface-3:#2E253C;
+  --ink:#EFE9F5; --ink-2:#B0A5BE; --ink-3:#847A93;
+  --rule:#332A42; --rule-2:#2A2237;
+  --brand:#C79BE4; --brand-soft:#9B6FB8; --brand-wash:#2A2039;
+  --teal:#4FD0BC; --teal-soft:#43BFB6;
+  --z-south:#F59B47; --z-center:#FF5FAE; --z-campus:#4FD0BC; --z-telhai:#A8D24E;
+  --bar-off:#332A42;
+  --map-paper:#141021; --map-farm:#1B1B26; --map-green:#1D2E26; --map-built:#272033;
+  --map-indus:#2C2537; --map-water:#4E7E9B; --map-road:#5A5069; --map-road2:#3D3450; --map-street:#2F2740;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  --go:#4FC97A; --maybe:#F0A94B; --out:#F2705F;
+}
+
+*{box-sizing:border-box}
+html{direction:rtl}
+body{margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Assistant",system-ui,"Segoe UI",sans-serif; font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Frank Ruhl Libre","Assistant",Georgia,serif; font-weight:700; margin:0;
+  text-wrap:balance; line-height:1.25}
+button{font:inherit; color:inherit}
+.tnum{font-variant-numeric:tabular-nums}
+
+.bar{position:sticky; top:0; z-index:40; background:var(--surface);
+  border-bottom:1px solid var(--rule); display:flex; align-items:center; gap:22px;
+  padding:0 22px; height:64px}
+.brand{font-family:"Frank Ruhl Libre",serif; font-size:21px; font-weight:900;
+  color:var(--brand); white-space:nowrap; letter-spacing:-.01em}
+nav.tabs{display:flex; gap:4px; margin-inline-start:auto; overflow-x:auto}
+nav.tabs button{background:none; border:0; border-radius:999px; cursor:pointer;
+  padding:8px 17px; font-size:16px; font-weight:600; color:var(--ink-2); white-space:nowrap}
+nav.tabs button:hover{background:var(--surface-2); color:var(--ink)}
+nav.tabs button[aria-selected="true"]{background:var(--brand); color:#fff}
+:root[data-theme="dark"] nav.tabs button[aria-selected="true"]{color:#161020}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) nav.tabs button[aria-selected="true"]{color:#161020}
+}
+.util{display:flex; gap:8px; align-items:center}
+.ghost{border:1px solid var(--rule); background:var(--surface); border-radius:999px;
+  padding:6px 14px; font-size:14px; cursor:pointer; color:var(--ink-2); text-decoration:none}
+.ghost:hover{border-color:var(--brand-soft); color:var(--brand)}
+
+.view{display:none}
+.view.on{display:block}
+.doc{max-width:1180px; margin:0 auto; padding:40px 24px 100px}
+.lede{font-size:18px; color:var(--ink-2); max-width:62ch; margin:10px 0 0}
+h1.page{font-size:36px; color:var(--brand)}
+h2.sec{font-size:25px; margin:0 0 4px}
+.secnote{font-size:15px; color:var(--ink-3); margin:0 0 20px; max-width:70ch}
+hr.rule{height:1px; background:var(--rule); border:0; margin:44px 0 28px}
+
+#view-map.on{height:calc(100dvh - 64px); display:grid; grid-template-columns:minmax(0,1fr) 330px}
+.mapcol{position:relative; display:flex; flex-direction:column; min-width:0}
+.mapbar{display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+  padding:12px 20px; border-bottom:1px solid var(--rule); background:var(--surface)}
+.mapbar label{font-size:14px; color:var(--ink-3); font-weight:600}
+.chips-tog{display:flex; gap:7px}
+.tog{border:1px solid var(--rule); background:var(--surface); border-radius:999px;
+  padding:5px 15px; font-size:14.5px; cursor:pointer; color:var(--ink-3); display:flex;
+  align-items:center; gap:7px}
+.tog[aria-pressed="true"]{border-color:var(--brand); color:var(--brand); background:var(--brand-wash)}
+.tog i{width:10px; height:10px; border-radius:50%; background:currentColor; display:block}
+.tog i.dia{border-radius:2px; transform:rotate(45deg); width:9px; height:9px;
+  background:none; border:2px solid currentColor}
+select.sel{padding:6px 12px; border:1px solid var(--rule); border-radius:999px;
+  background:var(--surface); color:var(--ink); font:inherit; font-size:14.5px; max-width:280px}
+.mapwrap{position:relative; flex:1; background:var(--map-paper); overflow:hidden; min-height:0}
+#map{width:100%; height:100%; display:block; cursor:grab; touch-action:none}
+#map.drag{cursor:grabbing}
+.mapctl{position:absolute; top:14px; inset-inline-start:14px; display:flex;
+  flex-direction:column; gap:6px; z-index:5}
+.mapctl button{width:34px; height:34px; border:1px solid var(--rule); background:var(--surface);
+  border-radius:8px; cursor:pointer; font-size:17px; line-height:1; box-shadow:var(--shadow); color:var(--ink-2)}
+.mapctl button:hover{color:var(--brand); border-color:var(--brand-soft)}
+.scalebar{position:absolute; bottom:14px; inset-inline-start:16px; z-index:5; font-size:12px;
+  color:var(--ink-2); background:var(--surface); padding:4px 9px; border:1px solid var(--rule);
+  border-radius:6px}
+.scalebar i{display:block; height:3px; background:var(--ink-3); margin-bottom:3px}
+.maptip{position:absolute; z-index:6; pointer-events:none; background:var(--surface);
+  border:1px solid var(--rule); border-radius:7px; padding:6px 11px; font-size:13.5px;
+  box-shadow:var(--shadow); opacity:0; transition:opacity .1s; max-width:250px; font-weight:600}
+.legendbox{position:absolute; bottom:14px; inset-inline-end:16px; z-index:5;
+  background:var(--surface); border:1px solid var(--rule); border-radius:9px;
+  padding:9px 13px; font-size:13px; box-shadow:var(--shadow); max-width:230px}
+.legendbox .lrow{display:flex; align-items:center; gap:8px; padding:2px 0; color:var(--ink-2)}
+.legendbox b{display:block; font-size:11.5px; letter-spacing:.09em; color:var(--ink-3);
+  margin-bottom:5px; font-weight:700}
+.sw{width:12px; height:12px; border-radius:50%; flex:none}
+
+.ctx{background:var(--surface); border-inline-end:1px solid var(--rule); overflow-y:auto;
+  padding:18px 18px 50px}
+.ctx .hdr{display:flex; gap:22px; padding-bottom:16px; border-bottom:1px solid var(--rule); margin-bottom:6px}
+.ctx .hdr div{display:flex; flex-direction:column}
+.ctx .hdr b{font-family:"Frank Ruhl Libre",serif; font-size:27px; line-height:1; color:var(--brand)}
+.ctx .hdr span{font-size:12.5px; color:var(--ink-3)}
+.ctx .zh{display:flex; align-items:center; gap:9px; margin:22px 0 5px}
+.ctx .zh b{font-family:"Frank Ruhl Libre",serif; font-size:18px}
+.ctx .zd{font-size:13px; color:var(--ink-3); margin-bottom:9px; line-height:1.5}
+.ctx button.it{display:flex; align-items:center; gap:9px; width:100%; text-align:start;
+  background:none; border:0; border-radius:7px; padding:6px 8px; cursor:pointer;
+  font-size:14.5px; color:var(--ink-2)}
+.ctx button.it:hover{background:var(--surface-2); color:var(--ink)}
+.ctx button.it i{width:9px; height:9px; border-radius:50%; flex:none; display:block}
+.ctx button.it i.dia{border-radius:1px; transform:rotate(45deg); width:8px; height:8px;
+  background:none !important; border:2px solid var(--ink-3)}
+
+.grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:20px 22px; cursor:pointer; text-align:start; display:flex; flex-direction:column;
+  gap:11px; position:relative; overflow:hidden}
+.card:hover{border-color:var(--brand-soft); box-shadow:var(--shadow)}
+.card h3{font-size:19px}
+.card .org{font-size:13.5px; color:var(--ink-3); margin-top:-6px}
+.card p{margin:0; font-size:14.5px; color:var(--ink-2); display:-webkit-box;
+  -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chip{font-size:12.5px; font-weight:600; padding:3px 11px; border-radius:999px;
+  border:1px solid var(--rule); color:var(--ink-2); background:var(--surface-2); white-space:nowrap}
+.chip.solid{color:#fff; border-color:transparent}
+:root[data-theme="dark"] .chip.solid{color:#161020}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .chip.solid{color:#161020}
+}
+.card .foot{display:flex; gap:16px; margin-top:auto; padding-top:4px}
+.card .foot div{flex:1}
+.card .foot span{font-size:11.5px; color:var(--ink-3); display:block; margin-bottom:4px}
+
+.bar3{display:flex; gap:3px}
+.bar3 i{flex:1; height:6px; border-radius:3px; background:var(--bar-off); display:block}
+.bar3 i.on{background:var(--bc,var(--brand))}
+.scorerow{display:grid; grid-template-columns:1fr 84px; gap:14px; align-items:center;
+  padding:9px 0; border-bottom:1px solid var(--rule-2)}
+.scorerow:last-child{border-bottom:0}
+.scorerow b{font-size:14.5px; font-weight:600; display:block}
+.scorerow small{display:block; font-size:12.5px; color:var(--ink-3); line-height:1.45}
+.scorerow .val{font-size:12px; color:var(--ink-3); text-align:start; margin-top:5px}
+
+#panel{position:fixed; top:0; bottom:0; left:0; width:min(470px,100%); z-index:60;
+  background:var(--surface); border-right:1px solid var(--rule);
+  transform:translateX(-100%); transition:transform .22s ease; overflow-y:auto; box-shadow:var(--shadow)}
+#panel.on{transform:none}
+.ph{padding:22px 24px 17px; border-bottom:1px solid var(--rule); position:sticky; top:0;
+  background:var(--surface); z-index:2}
+.ph h2{font-size:23px; padding-inline-end:38px}
+.pclose{position:absolute; top:17px; inset-inline-end:18px; background:none; border:0;
+  font-size:24px; cursor:pointer; color:var(--ink-3); line-height:1}
+.pclose:hover{color:var(--ink)}
+.pb{padding:20px 24px 70px; display:flex; flex-direction:column; gap:22px}
+.pb section>h4{font-size:12px; letter-spacing:.1em; color:var(--ink-3);
+  font-family:"Assistant",sans-serif; font-weight:700; margin:0 0 9px}
+.pb ul{margin:0; padding-inline-start:19px; display:flex; flex-direction:column; gap:7px;
+  font-size:14.5px; color:var(--ink-2)}
+.pb p{margin:0; font-size:15.5px; color:var(--ink-2)}
+.scrim{position:fixed; inset:0; background:rgba(36,28,46,.32); z-index:50; opacity:0;
+  pointer-events:none; transition:opacity .2s}
+.scrim.on{opacity:1; pointer-events:auto}
+
+.quadbox{background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:16px; overflow-x:auto}
+.quad{width:100%; height:auto; display:block; min-width:640px}
+.ranklist{display:flex; flex-direction:column; gap:2px}
+.rank{display:grid; grid-template-columns:minmax(190px,1.3fr) 1fr 1fr; gap:20px;
+  align-items:center; padding:13px 14px; border-radius:10px; cursor:pointer;
+  border:1px solid transparent; text-align:start; background:none; width:100%}
+.rank:hover{background:var(--surface-2); border-color:var(--rule)}
+.rank .nm{font-size:15.5px; font-weight:600; display:flex; align-items:center; gap:9px}
+.rank .nm i{width:9px; height:9px; border-radius:50%; flex:none}
+.rank .mt{font-size:11.5px; color:var(--ink-3); display:block; margin-bottom:5px}
+.mtl{display:none}
+.rankhead{display:grid; grid-template-columns:minmax(190px,1.3fr) 1fr 1fr; gap:20px;
+  padding:0 14px 9px; font-size:12px; letter-spacing:.09em; color:var(--ink-3); font-weight:700;
+  border-bottom:1px solid var(--rule); margin-bottom:6px}
+.meter{height:9px; border-radius:5px; background:var(--bar-off); overflow:hidden}
+.meter i{display:block; height:100%; border-radius:5px; background:var(--mc,var(--brand))}
+.crit{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.crit .box{background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:18px 20px; border-top:4px solid var(--cc,var(--brand))}
+.crit .box h3{font-size:17px; margin-bottom:6px}
+.crit .box p{margin:0; font-size:14.5px; color:var(--ink-2)}
+
+.rgroup{display:flex; gap:10px; align-items:baseline; margin:28px 0 8px; padding:0 14px}
+.rgroup i{width:11px; height:11px; border-radius:50%; flex:none; position:relative; top:1px}
+.rgroup b{font-size:16.5px}
+.rgroup span{font-size:13px; color:var(--ink-3)}
+.devline{display:flex; gap:10px; align-items:baseline; padding:11px 13px;
+  border:1px solid var(--rule); border-radius:10px; background:var(--surface-2)}
+.devline i{width:11px; height:11px; border-radius:50%; flex:none; position:relative; top:1px}
+.devline b{font-size:14.5px; display:block}
+.devline small{display:block; font-size:12.5px; color:var(--ink-3); line-height:1.5}
+
+.toolbar{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:22px}
+.searchbox{padding:9px 16px; border:1px solid var(--rule); border-radius:999px;
+  background:var(--surface); color:var(--ink); font:inherit; font-size:15px; max-width:320px; flex:1}
+.count{font-size:13.5px; color:var(--ink-3)}
+
+@media (max-width:1080px){
+  #view-map.on{grid-template-columns:minmax(0,1fr)}
+  .ctx{display:none}
+}
+@media (max-width:720px){
+  .bar{gap:12px; padding:0 14px}
+  h1.page{font-size:28px}
+  .rank{grid-template-columns:1fr; gap:9px}
+  .rankhead{display:none}
+  .mtl{display:inline}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+:focus-visible{outline:2px solid var(--brand); outline-offset:2px}
+</style>
+
+<header class="bar">
+  <div class="brand">מפת התרבות של קריית שמונה</div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-v="map" aria-selected="true">מפה</button>
+    <button role="tab" data-v="actors" aria-selected="false">שחקנים</button>
+    <button role="tab" data-v="capital" aria-selected="false">שותפי הון</button>
+    <button role="tab" data-v="assets" aria-selected="false">נכסים ואתרים</button>
+    <button role="tab" data-v="cross" aria-selected="false">הצלבה</button>
+  </nav>
+  <div class="util">
+    <a class="ghost" id="gis" href="#" target="_blank" rel="noopener">GIS עירוני</a>
+    <button class="ghost" id="theme" title="החלפת ערכת צבעים">◐</button>
+  </div>
+</header>
+
+<main>
+<section class="view on" id="view-map">
+  <div class="mapcol">
+    <div class="mapbar">
+      <div class="chips-tog">
+        <button class="tog" id="tActors" aria-pressed="true"><i></i>שחקנים</button>
+        <button class="tog" id="tAssets" aria-pressed="true"><i class="dia"></i>משאבים</button>
+      </div>
+      <label for="colorBy">צבע לפי</label>
+      <select class="sel" id="colorBy"></select>
+    </div>
+    <div class="mapwrap">
+      <svg id="map" role="img" aria-label="מפת שחקני ומשאבי התרבות בקריית שמונה"></svg>
+      <div class="mapctl">
+        <button id="zin" title="התקרבות">+</button>
+        <button id="zout" title="התרחקות">‒</button>
+        <button id="zreset" title="איפוס תצוגה">⟲</button>
+      </div>
+      <div class="scalebar"><i id="scaleBarLine" style="width:70px"></i><span id="scaleBarTxt">.</span></div>
+      <div class="legendbox" id="legend"></div>
+      <div class="maptip" id="tip"></div>
+    </div>
+  </div>
+  <div class="ctx" id="ctx"></div>
+</section>
+
+<section class="view" id="view-actors"><div class="doc">
+  <h1 class="page">שחקנים</h1>
+  <p class="lede">הגופים המפעילים תוכן תרבותי בקריית שמונה ובמרחב האזורי. לחיצה פותחת את הפרופיל המלא.</p>
+  <hr class="rule">
+  <div class="toolbar">
+    <input class="searchbox" id="q" placeholder="חיפוש שחקן או נושא">
+    <span class="count" id="cnt"></span>
+  </div>
+  <div class="grid" id="cards"></div>
+</div></section>
+
+<section class="view" id="view-capital"><div class="doc">
+  <h1 class="page">שותפי הון</h1>
+  <p class="lede">פילנתרופיה, מוסדות לאומיים וגופי ממשלה המממנים ותומכים בפעילות התרבות בעיר. תרומתם היא הון ותמיכה, ולכן אינם ממוקמים על המפה.</p>
+  <hr class="rule">
+  <div class="grid" id="capcards"></div>
+</div></section>
+
+<section class="view" id="view-assets"><div class="doc">
+  <h1 class="page">נכסים ואתרים</h1>
+  <p class="lede">המקומות הפיזיים העומדים לרשות התרבות בעיר, לפי אזורי הפעילות.</p>
+  <div id="assetgroups"></div>
+</div></section>
+
+<section class="view" id="view-cross"><div class="doc">
+  <h1 class="page">הצלבה</h1>
+  <p class="lede">היעד: מימוש תפקידה של התרבות בתוכנית האסטרטגית, כך שהיא מפתחת תעשיית תרבות מקומית בת קיימא לאורך שנים. כל שחקן נבחן פעמיים, מול האומדנים ומול המדדים של תמונת הניצחון, ולצדם הרמזור: לאן הפעילות מכוונת.</p>
+
+  <hr class="rule">
+  <h2 class="sec">הרמזור: הכוונה לפיתוח מקומי</h2>
+  <p class="secnote">היקף הפעילות אומר היכן הגוף פועל: עירוני, אזורי או ארצי. הרמזור אומר דבר אחר, לאן הפעילות מכוונת. גוף ארצי יכול להיות ירוק, וגוף מקומי יכול להיות אדום. <span id="devstat"></span></p>
+  <div class="crit" id="critDev"></div>
+
+  <hr class="rule">
+  <h2 class="sec">האומדנים</h2>
+  <p class="secnote">חמישה קריטריונים לבחינת ההתאמה של כל גוף לאסטרטגיה העירונית.</p>
+  <div class="crit" id="critA"></div>
+
+  <hr class="rule">
+  <h2 class="sec">המדדים</h2>
+  <p class="secnote">ארבעת המחוגים של תמונת הניצחון, כפי שהוגדרו בתוכנית העירונית.</p>
+  <div class="crit" id="critM"></div>
+
+  <hr class="rule">
+  <h2 class="sec">מפת המיקום האסטרטגי</h2>
+  <p class="secnote">שלושה מעגלים לפי היקף הפעילות: עירוני, אזורי וארצי. ככל שגוף מתאים יותר לאומדנים כך הוא קרוב יותר למרכז, גודל העיגול הוא ההשפעה על תמונת הניצחון, והצבע הוא הרמזור: הכוונה לפיתוח מקומי.</p>
+  <div class="quadbox"><svg class="quad" id="quad" viewBox="0 0 900 660"></svg></div>
+
+  <hr class="rule">
+  <h2 class="sec">התאמה מול השפעה</h2>
+  <p class="secnote">ציר אופקי: התאמה לאומדנים. ציר אנכי: השפעה על תמונת הניצחון. הצבע לפי הרמזור: הכוונה לפיתוח מקומי.</p>
+  <div class="quadbox"><svg class="quad" id="quad2" viewBox="0 0 900 560"></svg></div>
+
+  <hr class="rule">
+  <h2 class="sec">התאמה והשפעה, לפי שחקן</h2>
+  <p class="secnote">לחיצה על שורה פותחת את הפרופיל המלא ואת הפירוט לכל אומדן ומדד.</p>
+  <div class="rankhead"><span>שחקן</span><span>התאמה לאומדנים</span><span>השפעה על תמונת הניצחון</span></div>
+  <div class="ranklist" id="ranklist"></div>
+
+</div></section>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside id="panel" role="dialog" aria-modal="true" aria-hidden="true"></aside>
+
+<script src="geo.js"></script>
+<script src="data.js"></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const el=(t,a={},...k)=>{const n=document.createElement(t);
+  for(const[p,v]of Object.entries(a)){if(p==="class")n.className=v;else if(p.startsWith("on"))n.addEventListener(p.slice(2),v);else n.setAttribute(p,v);}
+  k.flat().forEach(c=>{if(c===""||c==null)return; n.append(c?.nodeType?c:document.createTextNode(c));});
+  return n;};
+const S=(t,a={})=>{const n=document.createElementNS("http://www.w3.org/2000/svg",t);
+  for(const[p,v]of Object.entries(a))n.setAttribute(p,v); return n;};
+
+const ZC={south:"var(--z-south)",center:"var(--z-center)",campus:"var(--z-campus)",telhai:"var(--z-telhai)"};
+const DEVC={g:"var(--go)",o:"var(--maybe)",r:"var(--out)"};
+const ZN=Object.fromEntries(M.zones.map(z=>[z.id,z.n]));
+const scored=a=>!a.brief;
+const aAvg=a=>M.assess.reduce((s,x)=>s+a.a[x.id],0)/M.assess.length;
+const mAvg=a=>M.metrics.reduce((s,x)=>s+a.m[x.id],0)/M.metrics.length;
+const isVague=p=>/משוער|סכמטי|בבחינה|אזורית|^קריית שמונה$/.test(p||"");
+$("#gis").href=M.gis;
+
+const R=6378137, rad=Math.PI/180;
+const PX=lon=>lon*rad*R, PY=lat=>Math.log(Math.tan(Math.PI/4+lat*rad/2))*R;
+let ORIGIN=null;
+function pt(lat,lon){return [PX(lon)-ORIGIN.x, ORIGIN.y-PY(lat)];}
+(function(){
+  let x0=1e18,x1=-1e18,y1=-1e18;
+  [...M.actors,...M.assets,...M.zones].forEach(o=>{
+    const x=PX(o.lon), y=PY(o.lat);
+    x0=Math.min(x0,x); x1=Math.max(x1,x); y1=Math.max(y1,y);
+  });
+  ORIGIN={x:x0,y:y1};
+  const fx0=PX(35.5620)-ORIGIN.x, fx1=PX(35.5890)-ORIGIN.x;
+  const fy0=ORIGIN.y-PY(33.2425), fy1=ORIGIN.y-PY(33.1900);
+  window.__F={x:fx0,y:fy0,w:fx1-fx0,h:fy1-fy0};
+})();
+
+const svg=$("#map");
+const gBase=S("g"),gZone=S("g"),gAxis=S("g"),gMark=S("g"),gLab=S("g"),gZLab=S("g",{"pointer-events":"none"});
+const gRoot=S("g");
+[gBase,gZone,gAxis,gMark,gLab,gZLab].forEach(g=>gRoot.append(g));
+svg.append(gRoot);
+let VB={...window.__F}, BASE=null;
+
+function path(coords,close){let d="";
+  coords.forEach((c,i)=>{const[x,y]=pt(c[1],c[0]); d+=(i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);});
+  return d+(close?"Z":"");}
+
+const LAYERS=[
+  {k:"farm", fill:"var(--map-farm)", op:.9},
+  {k:"green",fill:"var(--map-green)",op:.95},
+  {k:"built",fill:"var(--map-built)",op:1},
+  {k:"indus",fill:"var(--map-indus)",op:1},
+  {k:"streets",   stroke:"var(--map-street)",w:0.9},
+  {k:"road_minor",stroke:"var(--map-road2)", w:1.5},
+  {k:"road_major",stroke:"var(--map-road)",  w:2.6},
+  {k:"water",     stroke:"var(--map-water)", w:1.9}
+];
+function drawBase(){
+  gBase.textContent="";
+  LAYERS.forEach(L=>{
+    const g=S("g");
+    (GEO[L.k]||[]).forEach(f=>{
+      const closed=f.t==="poly";
+      const p=S("path",{d:path(f.c,closed)});
+      if(L.fill&&closed){p.setAttribute("fill",L.fill);p.setAttribute("fill-opacity",L.op);p.setAttribute("stroke","none");}
+      else{p.setAttribute("fill","none");p.setAttribute("stroke",L.stroke||L.fill);
+           p.setAttribute("stroke-width",L.w||1);p.setAttribute("stroke-linecap","round");
+           p.setAttribute("stroke-linejoin","round");p.setAttribute("vector-effect","non-scaling-stroke");}
+      g.append(p);
+    });
+    gBase.append(g);
+  });
+}
+function drawZones(){
+  gZone.textContent=""; gZLab.textContent="";
+  M.zones.forEach(z=>{
+    const[x,y]=pt(z.lat,z.lon);
+    gZone.append(S("circle",{cx:x,cy:y,r:z.r,fill:ZC[z.id],"fill-opacity":.09,
+      stroke:ZC[z.id],"stroke-opacity":.45,"stroke-width":1.4,"stroke-dasharray":"6 5",
+      "vector-effect":"non-scaling-stroke"}));
+    const lg=S("g",{class:"zlb",transform:"translate("+x+" "+(y-z.r-8)+")"});
+    const lt=S("text",{x:0,y:0,"text-anchor":"middle","font-size":"14","font-weight":"700",
+      "font-family":"Frank Ruhl Libre,serif",fill:ZC[z.id],stroke:"var(--map-paper)",
+      "stroke-width":"4","paint-order":"stroke",direction:"rtl"});
+    lt.textContent=z.n; lg.append(lt); gZLab.append(lg);
+  });
+}
+function drawAxis(){
+  gAxis.textContent="";
+  gAxis.append(S("path",{d:path(M.axis.ext.map(p=>[p[1],p[0]])),fill:"none",stroke:"var(--brand)",
+    "stroke-width":2.4,"stroke-opacity":.3,"stroke-dasharray":"8 7","stroke-linecap":"round",
+    "vector-effect":"non-scaling-stroke"}));
+  gAxis.append(S("path",{d:path(M.axis.line.map(p=>[p[1],p[0]])),fill:"none",stroke:"var(--brand)",
+    "stroke-width":5,"stroke-opacity":.55,"stroke-linecap":"round","stroke-linejoin":"round",
+    "vector-effect":"non-scaling-stroke"}));
+}
+
+let colorMode="zone";
+const RAMP={1:"var(--bar-off)",2:"var(--brand-soft)",3:"var(--brand)"};
+function markColor(o){
+  if(o.__asset) return "var(--ink-3)";
+  if(colorMode==="zone")  return ZC[o.zone]||"var(--ink-3)";
+  if(colorMode==="scope") return M.scopes[o.scope]||"var(--ink-3)";
+  if(colorMode==="dev")   return DEVC[o.dev]||"var(--ink-3)";
+  if(!scored(o)) return "var(--bar-off)";
+  if(colorMode.startsWith("a:")) return RAMP[o.a[colorMode.slice(2)]]||"var(--bar-off)";
+  if(colorMode.startsWith("m:")) return RAMP[o.m[colorMode.slice(2)]]||"var(--bar-off)";
+  if(colorMode==="fit")    return RAMP[Math.round(aAvg(o))]||"var(--bar-off)";
+  if(colorMode==="impact") return RAMP[Math.round(mAvg(o))]||"var(--bar-off)";
+  return "var(--ink-3)";
+}
+function drawMarks(){
+  gMark.textContent=""; gLab.textContent="";
+  const showA=$("#tActors").getAttribute("aria-pressed")==="true";
+  const showS=$("#tAssets").getAttribute("aria-pressed")==="true";
+  const list=[];
+  if(showS) M.assets.filter(a=>a.lat).forEach(a=>list.push({...a,__asset:true}));
+  if(showA) M.actors.forEach(a=>list.push(a));
+  const seen=new Map();
+  list.forEach(o=>{
+    let[x,y]=pt(o.lat,o.lon);
+    const key=x.toFixed(0)+"|"+y.toFixed(0);
+    const n=seen.get(key)||0; seen.set(key,n+1);
+    if(n){const ang=n*2.399, rr=30+n*8; x+=Math.cos(ang)*rr; y+=Math.sin(ang)*rr;}
+    const c=markColor(o), vague=isVague(o.prec);
+    const g=S("g",{class:"mk",transform:"translate("+x+" "+y+")","data-id":o.id,
+      "data-asset":o.__asset?1:0,tabindex:"0",role:"button"});
+    g.setAttribute("aria-label",o.n);
+    if(o.__asset){
+      g.append(S("rect",{x:-5,y:-5,width:10,height:10,transform:"rotate(45)",fill:"var(--surface)",
+        stroke:c,"stroke-width":1.9,"stroke-dasharray":vague?"2.4 2.4":"none","vector-effect":"non-scaling-stroke"}));
+    }else{
+      g.append(S("circle",{r:8,fill:c,"fill-opacity":vague?.32:.92,stroke:c,"stroke-width":2,
+        "stroke-dasharray":vague?"2.8 2.6":"none","vector-effect":"non-scaling-stroke"}));
+    }
+    gMark.append(g);
+    const t=S("text",{x:0,y:o.__asset?-10:-13,"text-anchor":"middle","font-size":"11.5",
+      "font-family":"Assistant,sans-serif","font-weight":o.__asset?"400":"600",
+      fill:o.__asset?"var(--ink-2)":"var(--ink)",stroke:"var(--map-paper)","stroke-width":"3.4",
+      "paint-order":"stroke",direction:"rtl"});
+    t.textContent=o.n.length>26?o.n.slice(0,25)+"...":o.n;
+    const tg=S("g",{transform:"translate("+x+" "+y+")",class:"lbg"});
+    tg.dataset.asset=o.__asset?"1":"0";
+    tg.dataset.rank=o.__asset?"2":"1";
+    tg.dataset.wid=String(t.textContent.length*5.8+8);
+    tg.append(t); gLab.append(tg);
+  });
+  applyScale();
+}
+function applyScale(){
+  const px=svg.clientWidth||900, k=VB.w/px;
+  $$(".mk",gMark).forEach(g=>{
+    const t=g.getAttribute("transform").match(/translate\(([-\d.]+) ([-\d.]+)\)/);
+    g.setAttribute("transform","translate("+t[1]+" "+t[2]+") scale("+k+")");
+  });
+  $$(".zlb",gZLab).forEach(g=>{
+    const t=g.getAttribute("transform").match(/translate\(([-\d.]+) ([-\d.]+)\)/);
+    g.setAttribute("transform","translate("+t[1]+" "+t[2]+") scale("+k+")");
+  });
+  const boxes=[];
+  $$(".lbg",gLab).map(g=>{
+    const t=g.getAttribute("transform").match(/translate\(([-\d.]+) ([-\d.]+)\)/);
+    const mx=+t[1], my=+t[2];
+    g.setAttribute("transform","translate("+mx+" "+my+") scale("+k+")");
+    return {g,sx:(mx-VB.x)/k, sy:(my-VB.y)/k, w:+g.dataset.wid, rank:+g.dataset.rank};
+  }).sort((a,b)=>a.rank-b.rank||a.sy-b.sy).forEach(L=>{
+    const dy=L.g.dataset.asset==="1"?-10:-13;
+    const box={x0:L.sx-L.w/2,x1:L.sx+L.w/2,y0:L.sy+dy-11,y1:L.sy+dy+4};
+    const hit=boxes.some(b=>!(box.x1<b.x0||box.x0>b.x1||box.y1<b.y0||box.y0>b.y1));
+    if(hit){L.g.style.display="none";}else{L.g.style.display="";boxes.push(box);}
+  });
+  const mPerUnit=Math.cos(33.208*rad);
+  const nice=[100,200,300,500,1000,2000];
+  const target=95*k*mPerUnit;
+  const m=nice.reduce((p,c)=>Math.abs(c-target)<Math.abs(p-target)?c:p);
+  $("#scaleBarLine").style.width=(m/mPerUnit/k).toFixed(0)+"px";
+  $("#scaleBarTxt").textContent=m>=1000?(m/1000)+' ק"מ':m+" מ׳";
+}
+function setVB(){svg.setAttribute("viewBox",VB.x+" "+VB.y+" "+VB.w+" "+VB.h);applyScale();}
+function fit(){
+  const r=svg.getBoundingClientRect();
+  if(r.width<20||r.height<20){BASE=BASE||{...VB};setVB();return;}
+  const ar=r.width/r.height, F=window.__F;
+  let w=F.w,h=F.h;
+  if(w/h<ar) w=h*ar; else h=w/ar;
+  VB={x:F.x-(w-F.w)/2, y:F.y-(h-F.h)/2, w, h};
+  BASE={...VB}; setVB();
+}
+function zoom(f,cx,cy){
+  const nw=Math.min(BASE.w*3,Math.max(BASE.w*0.04,VB.w*f)), s=nw/VB.w;
+  VB.x=cx-(cx-VB.x)*s; VB.y=cy-(cy-VB.y)*s; VB.w=nw; VB.h*=s; setVB();
+}
+function svgPt(ev){const r=svg.getBoundingClientRect();
+  return [VB.x+(ev.clientX-r.left)/r.width*VB.w, VB.y+(ev.clientY-r.top)/r.height*VB.h];}
+let drag=null, pinch=null, lastGesture=0, downMk=null;
+const ptrs=new Map();
+function pinchInfo(){
+  const [a,b]=[...ptrs.values()];
+  return {d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),
+          cx:(a.clientX+b.clientX)/2, cy:(a.clientY+b.clientY)/2};
+}
+function capture(id){try{svg.setPointerCapture(id);}catch(err){}}
+// לכידת המצביע נדחית עד תחילת גרירה בפועל, אחרת אירוע ה-click
+// ממוען מחדש אל ה-svg והקשה על סמן לא פותחת את הפרופיל
+svg.addEventListener("pointerdown",e=>{
+  ptrs.set(e.pointerId,e);
+  if(ptrs.size===2){
+    drag=null; downMk=null; pinch=pinchInfo(); svg.classList.remove("drag");
+    [...ptrs.keys()].forEach(capture);
+  }else if(ptrs.size===1){
+    downMk=e.target.closest?.(".mk")||null;
+    drag={p:svgPt(e), x:e.clientX, y:e.clientY, dist:0, captured:false, id:e.pointerId};
+    svg.classList.add("drag");
+  }else{
+    pinch=null;
+  }
+});
+svg.addEventListener("pointermove",e=>{
+  if(ptrs.has(e.pointerId)) ptrs.set(e.pointerId,e);
+  if(pinch&&ptrs.size===2){
+    const n=pinchInfo();
+    if(n.d>4&&pinch.d>4){
+      const r=svg.getBoundingClientRect();
+      zoom(pinch.d/n.d, VB.x+(n.cx-r.left)/r.width*VB.w, VB.y+(n.cy-r.top)/r.height*VB.h);
+    }
+    pinch=n; lastGesture=99; return;
+  }
+  if(drag&&e.pointerId===drag.id){
+    drag.dist=Math.max(drag.dist,Math.hypot(e.clientX-drag.x,e.clientY-drag.y));
+    if(drag.dist>4&&!drag.captured){drag.captured=true;capture(e.pointerId);}
+    const p=svgPt(e);VB.x+=drag.p[0]-p[0];VB.y+=drag.p[1]-p[1];setVB();return;
+  }
+  const t=e.target.closest?.(".mk"), tip=$("#tip");
+  if(t){const o=find(t.dataset.id,t.dataset.asset==="1");
+    tip.textContent=o.n; tip.style.opacity=1;
+    const r=svg.getBoundingClientRect();
+    tip.style.left=(e.clientX-r.left+14)+"px"; tip.style.top=(e.clientY-r.top+14)+"px";
+  } else tip.style.opacity=0;
+});
+function endPtr(e){
+  if(!ptrs.has(e.pointerId)) return;
+  ptrs.delete(e.pointerId);
+  if(drag&&e.pointerId===drag.id) lastGesture=drag.dist;
+  if(ptrs.size===0){
+    pinch=null; drag=null; svg.classList.remove("drag");
+  }else if(ptrs.size===1){
+    // מעבר מצביטה לגרירה באצבע שנותרה
+    pinch=null;
+    const rem=[...ptrs.values()][0];
+    drag={p:svgPt(rem), x:rem.clientX, y:rem.clientY, dist:99, captured:true, id:rem.pointerId};
+    lastGesture=99;
+  }else if(ptrs.size===2){
+    pinch=pinchInfo();
+  }
+}
+// גם על window: שחרור מחוץ ל-svg לפני שהלכידה נתפסה חייב לנקות את המצב
+addEventListener("pointerup",endPtr);
+addEventListener("pointercancel",endPtr);
+svg.addEventListener("wheel",e=>{e.preventDefault();const[cx,cy]=svgPt(e);zoom(e.deltaY>0?1.18:.85,cx,cy);},{passive:false});
+svg.addEventListener("click",e=>{
+  if(lastGesture>6){lastGesture=0;return;}
+  const t=e.target.closest(".mk")||downMk; downMk=null;
+  if(!t)return;
+  open(find(t.dataset.id,t.dataset.asset==="1"));
+});
+svg.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){const t=e.target.closest?.(".mk");
+  if(t){e.preventDefault();open(find(t.dataset.id,t.dataset.asset==="1"));}}});
+$("#zin").onclick=()=>zoom(.72,VB.x+VB.w/2,VB.y+VB.h/2);
+$("#zout").onclick=()=>zoom(1.38,VB.x+VB.w/2,VB.y+VB.h/2);
+$("#zreset").onclick=()=>fit();
+addEventListener("resize",()=>{if($("#view-map").classList.contains("on"))fit();});
+function find(id,asset){
+  if(asset) return M.assets.find(o=>o.id===id);
+  return M.actors.find(o=>o.id===id)||M.assets.find(o=>o.id===id)||M.capital.find(o=>o.id===id);
+}
+function flyTo(o){goto("map");requestAnimationFrame(()=>{
+  const[x,y]=pt(o.lat,o.lon), w=BASE.w*.26, h=w*(BASE.h/BASE.w);
+  VB={x:x-w/2,y:y-h/2,w,h}; setVB();});}
+
+(function(){
+  const sel=$("#colorBy"), add=(v,t)=>sel.append(el("option",{value:v},t));
+  add("zone","אזור הפעילות");
+  add("dev","הרמזור: הכוונה לפיתוח מקומי");
+  add("scope","היקף הפעילות");
+  add("fit","התאמה כוללת לאומדנים");
+  add("impact","השפעה כוללת על תמונת הניצחון");
+  M.assess.forEach(a=>add("a:"+a.id,"אומדן: "+a.n));
+  M.metrics.forEach(m=>add("m:"+m.id,"מדד: "+m.n));
+  sel.onchange=()=>{colorMode=sel.value;legend();drawMarks();};
+  ["tActors","tAssets"].forEach(id=>$("#"+id).onclick=()=>{
+    const b=$("#"+id); b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true");
+    drawMarks();});
+})();
+function legend(){
+  const box=$("#legend"); box.textContent="";
+  const row=(c,t)=>box.append(el("div",{class:"lrow"},el("span",{class:"sw",style:"background:"+c}),t));
+  if(colorMode==="zone"){box.append(el("b",{},"אזור הפעילות")); M.zones.forEach(z=>row(ZC[z.id],z.n));}
+  else if(colorMode==="scope"){box.append(el("b",{},"היקף הפעילות"));
+    Object.entries(M.scopes).forEach(([k,c])=>row(c,k));}
+  else if(colorMode==="dev"){box.append(el("b",{},"הכוונה לפיתוח מקומי"));
+    M.devOrder.forEach(k=>row(DEVC[k],M.dev[k].n));}
+  else{
+    const k=colorMode.slice(2);
+    const def=colorMode.startsWith("a:")?M.assess.find(a=>a.id===k)
+            :colorMode.startsWith("m:")?M.metrics.find(m=>m.id===k):null;
+    box.append(el("b",{},def?def.n:(colorMode==="fit"?"התאמה כוללת":"השפעה כוללת")));
+    [3,2,1].forEach(v=>row(RAMP[v],M.levels[v]));
+  }
+}
+
+const panel=$("#panel"), scrim=$("#scrim");
+let lastFocus=null;
+function setInert(on){
+  [$("header.bar"),$("main")].forEach(n=>{
+    if(!n)return; on?n.setAttribute("inert",""):n.removeAttribute("inert");});
+}
+function close(){
+  panel.classList.remove("on");scrim.classList.remove("on");
+  setInert(false);
+  if(lastFocus&&document.contains(lastFocus)){try{lastFocus.focus();}catch(e){}}
+  else if(panel.contains(document.activeElement))document.activeElement.blur();
+  lastFocus=null;
+  panel.setAttribute("aria-hidden","true");
+}
+scrim.onclick=close;
+addEventListener("keydown",e=>{if(e.key==="Escape")close();});
+
+function bar3(v,color){
+  const b=el("div",{class:"bar3",style:"--bc:"+color});
+  for(let i=1;i<=3;i++) b.append(el("i",{class:i<=v?"on":""}));
+  return b;}
+function scoreBlock(o){
+  const w=el("div",{});
+  w.append(el("h4",{},"אומדנים: התאמה לאסטרטגיה"));
+  M.assess.forEach(a=>w.append(el("div",{class:"scorerow"},
+    el("div",{},el("b",{},a.n),el("small",{},a.q)),
+    el("div",{},bar3(o.a[a.id],"var(--brand)"),el("div",{class:"val"},M.levels[o.a[a.id]])))));
+  w.append(el("h4",{style:"margin:22px 0 9px"},"מדדים: תמונת הניצחון"));
+  M.metrics.forEach(m=>w.append(el("div",{class:"scorerow"},
+    el("div",{},el("b",{},m.n),el("small",{},m.q)),
+    el("div",{},bar3(o.m[m.id],m.c),el("div",{class:"val"},M.levels[o.m[m.id]])))));
+  return w;}
+
+function open(o){
+  if(!o)return;
+  const kind=M.capital.indexOf(o)>=0?"capital":M.assets.indexOf(o)>=0?"asset":"actor";
+  panel.textContent="";
+  const zc=kind==="capital"?"var(--brand)":(ZC[o.zone]||"var(--rule)");
+  const chips=el("div",{class:"chips",style:"margin-top:11px"});
+  if(kind==="actor"){
+    chips.append(el("span",{class:"chip solid",style:"background:"+zc},ZN[o.zone]),
+      el("span",{class:"chip"},o.status), el("span",{class:"chip"},o.scope));
+  }else if(kind==="asset"){
+    chips.append(el("span",{class:"chip solid",style:"background:"+zc},ZN[o.zone]),
+      el("span",{class:"chip"},o.st));
+  }else{
+    chips.append(el("span",{class:"chip solid",style:"background:var(--brand)"},"שותף הון"));
+  }
+  if(o.dev&&M.dev[o.dev])
+    chips.append(el("span",{class:"chip solid",style:"background:"+DEVC[o.dev]+(o.dev==="o"?";color:#20160A":"")},M.dev[o.dev].n));
+  const head=el("div",{class:"ph",style:"border-top:4px solid "+zc},
+    el("button",{class:"pclose",onclick:close,"aria-label":"סגירה"},"×"),
+    el("h2",{},o.n),
+    o.org?el("div",{style:"font-size:14px;color:var(--ink-3);margin-top:3px"},o.org):"",
+    chips);
+  const b=el("div",{class:"pb"});
+  b.append(el("section",{},el("h4",{},kind==="asset"?"על המקום":"על הגוף"),el("p",{},o.what||o.d)));
+  if(o.dev&&M.dev[o.dev])
+    b.append(el("section",{},el("h4",{},"הרמזור: הכוונה לפיתוח מקומי"),
+      el("div",{class:"devline"},el("i",{style:"background:"+DEVC[o.dev]}),
+        el("div",{},el("b",{},M.dev[o.dev].n),el("small",{},M.dev[o.dev].q)))));
+  if(o.branches&&o.branches.length)
+    b.append(el("section",{},el("h4",{},"שלוחות ומוקדי פעילות"),
+      el("ul",{},o.branches.map(x=>el("li",{},x)))));
+  if(o.partners&&o.partners.length)
+    b.append(el("section",{},el("h4",{},"ועדת היגוי ושותפים"),
+      el("div",{class:"chips"},o.partners.map(x=>el("span",{class:"chip"},x)))));
+  if(o.brings&&o.brings.length)
+    b.append(el("section",{},el("h4",{},"מה הוא מביא"),el("ul",{},o.brings.map(x=>el("li",{},x)))));
+  if(o.connect&&o.connect.length)
+    b.append(el("section",{},el("h4",{},"הזדמנויות לחיבור"),el("ul",{},o.connect.map(x=>el("li",{},x)))));
+  if(kind==="actor"&&o.fields&&o.fields.length)
+    b.append(el("section",{},el("h4",{},"תשתיות היסוד"),
+      el("div",{class:"chips"},o.fields.map(f=>{const p=M.fields.find(x=>x.id===f);
+        return el("span",{class:"chip solid",style:"background:"+p.c},p.n);}))));
+  if(kind==="asset"&&o.hold&&o.hold.length)
+    b.append(el("section",{},el("h4",{},"מי מחזיק"),
+      el("div",{class:"chips"},o.hold.map(h=>el("span",{class:"chip"},h)))));
+  if(o.link&&o.link.length){
+    const rel=o.link.map(id=>M.actors.find(a=>a.id===id)).filter(Boolean);
+    if(rel.length) b.append(el("section",{},el("h4",{},kind==="capital"?"תומך ב":"שחקנים קשורים"),
+      el("div",{class:"chips"},rel.map(a=>el("button",{class:"chip",style:"cursor:pointer",
+        onclick:()=>open(a)},a.n)))));
+  }
+  if(kind==="actor"&&scored(o)) b.append(el("section",{},scoreBlock(o)));
+  if(kind!=="capital") b.append(el("section",{},el("button",{class:"ghost",
+    style:"align-self:flex-start",onclick:()=>{close();flyTo(o);}},"הצג במפה")));
+  panel.append(head,b);
+  if(!panel.classList.contains("on")) lastFocus=document.activeElement;
+  panel.setAttribute("aria-label",o.n);
+  panel.classList.add("on"); scrim.classList.add("on"); panel.setAttribute("aria-hidden","false");
+  setInert(true);
+  const cb=$(".pclose",panel); if(cb)cb.focus();
+  panel.scrollTop=0;
+}
+
+function cards(){
+  const q=$("#q").value.trim();
+  const list=M.actors.filter(o=>!q||[o.n,o.org,o.what,...(o.brings||[])].join(" ").includes(q));
+  const box=$("#cards"); box.textContent="";
+  $("#cnt").textContent=list.length+" שחקנים";
+  list.forEach(o=>{
+    const zc=ZC[o.zone]||"var(--rule)";
+    const c=el("button",{class:"card",onclick:()=>open(o)},
+      el("h3",{},o.n),
+      o.org?el("div",{class:"org"},o.org):"",
+      el("div",{class:"chips"},
+        el("span",{class:"chip solid",style:"background:"+zc},ZN[o.zone]),
+        el("span",{class:"chip"},o.status),
+        o.dev?el("span",{class:"chip solid",style:"background:"+DEVC[o.dev]+(o.dev==="o"?";color:#20160A":"")},M.dev[o.dev].n):""),
+      el("p",{},o.what));
+    if(scored(o)) c.append(el("div",{class:"foot"},
+      el("div",{},el("span",{},"התאמה"),bar3(Math.round(aAvg(o)),"var(--brand)")),
+      el("div",{},el("span",{},"השפעה"),bar3(Math.round(mAvg(o)),"var(--teal)"))));
+    box.append(c);
+  });
+}
+$("#q").oninput=cards;
+
+function assetGroups(){
+  const box=$("#assetgroups"); box.textContent="";
+  const cardOf=o=>el("button",{class:"card",onclick:()=>open(o)},
+    el("h3",{},o.n),
+    o.org?el("div",{class:"org"},o.org):"",
+    o.st?el("div",{class:"chips"},el("span",{class:"chip"},o.st)):"",
+    el("p",{},o.what||o.d));
+  M.zones.forEach(z=>{
+    const list=M.assets.filter(a=>a.zone===z.id);
+    if(!list.length) return;
+    box.append(el("hr",{class:"rule"}));
+    box.append(el("h2",{class:"sec",style:"color:"+ZC[z.id]},z.n));
+    box.append(el("p",{class:"secnote"},z.d));
+    const g=el("div",{class:"grid"});
+    list.forEach(o=>g.append(cardOf(o)));
+    box.append(g);
+  });
+}
+
+function capitalCards(){
+  const box=$("#capcards"); box.textContent="";
+  M.capital.forEach(o=>box.append(el("button",{class:"card",onclick:()=>open(o)},
+    el("h3",{},o.n),
+    o.org?el("div",{class:"org"},o.org):"",
+    el("p",{},o.what))));
+}
+
+function ctx(){
+  const c=$("#ctx"); c.textContent="";
+  c.append(el("div",{class:"hdr"},
+    el("div",{},el("b",{class:"tnum"},String(M.actors.length)),el("span",{},"שחקנים")),
+    el("div",{},el("b",{class:"tnum"},String(M.assets.filter(a=>a.lat).length)),el("span",{},"משאבים על המפה"))));
+  M.zones.forEach(z=>{
+    const acts=M.actors.filter(a=>a.zone===z.id), asts=M.assets.filter(a=>a.zone===z.id&&a.lat);
+    c.append(el("div",{class:"zh"},
+      el("span",{class:"sw",style:"background:"+ZC[z.id]}),
+      el("b",{style:"color:"+ZC[z.id]},z.n)));
+    c.append(el("div",{class:"zd"},z.d));
+    acts.forEach(a=>c.append(el("button",{class:"it",onclick:()=>{open(a);flyTo(a);}},
+      el("i",{style:"background:"+ZC[z.id]}),a.n)));
+    asts.forEach(a=>c.append(el("button",{class:"it",onclick:()=>{open(a);flyTo(a);}},
+      el("i",{class:"dia"}),a.n)));
+  });
+}
+
+function ranklist(){
+  const box=$("#ranklist"); box.textContent="";
+  const mk=(v,c)=>el("div",{class:"meter",style:"--mc:"+c},
+    el("i",{style:"width:"+Math.round((v-1)/2*92+8)+"%"}));
+  M.devOrder.forEach(k=>{
+    const grp=M.actors.filter(o=>scored(o)&&o.dev===k)
+      .sort((a,b)=>(aAvg(b)+mAvg(b))-(aAvg(a)+mAvg(a)));
+    if(!grp.length) return;
+    box.append(el("div",{class:"rgroup"},
+      el("i",{style:"background:"+DEVC[k]}),
+      el("b",{},M.dev[k].n),
+      el("span",{},grp.length===1?"שחקן אחד":grp.length+" שחקנים")));
+    grp.forEach(o=>{
+      box.append(el("button",{class:"rank",onclick:()=>open(o)},
+        el("div",{class:"nm"},el("i",{style:"background:"+DEVC[k]}),o.n),
+        el("div",{},el("span",{class:"mt"},el("span",{class:"mtl"},"התאמה לאומדנים: "),M.levels[Math.round(aAvg(o))]),mk(aAvg(o),"var(--brand)")),
+        el("div",{},el("span",{class:"mt"},el("span",{class:"mtl"},"השפעה על תמונת הניצחון: "),M.levels[Math.round(mAvg(o))]),mk(mAvg(o),"var(--teal)"))));
+    });
+  });
+}
+
+function quadrant(){
+  const s=$("#quad"); s.textContent="";
+  const W=900,H=660,CX=450,CY=318;
+  const RINGS=[
+    {k:"עירוני", rIn:34,  rOut:104, lbl:"מעגל עירוני"},
+    {k:"אזורי",  rIn:118, rOut:196, lbl:"מעגל אזורי"},
+    {k:"ארצי",   rIn:210, rOut:288, lbl:"מעגל ארצי"}
+  ];
+  const tx=(x,y,t,o={})=>{const n=S("text",{x,y,fill:o.fill||"var(--ink-3)","font-size":o.fs||12.5,
+    "text-anchor":o.ta||"middle","font-weight":o.fw||400,direction:"rtl"});
+    if(o.stroke){n.setAttribute("stroke","var(--surface)");n.setAttribute("stroke-width",3.6);n.setAttribute("paint-order","stroke");}
+    n.textContent=t;s.append(n);return n;};
+
+  // rings
+  RINGS.slice().reverse().forEach(r=>{
+    s.append(S("circle",{cx:CX,cy:CY,r:r.rOut,fill:"var(--surface-2)","fill-opacity":.55,
+      stroke:"var(--rule)","stroke-width":1.2}));
+  });
+  RINGS.forEach(r=>{
+    tx(CX, CY-r.rOut+14, r.lbl, {fs:11.5, fill:"var(--ink-3)", stroke:true});
+  });
+  s.append(S("circle",{cx:CX,cy:CY,r:30,fill:"var(--brand)","fill-opacity":.10,
+    stroke:"var(--brand)","stroke-width":1.4}));
+  tx(CX,CY-3,"המסגרת",{fs:12.5,fw:700,fill:"var(--brand)"});
+  tx(CX,CY+13,"העירונית",{fs:12.5,fw:700,fill:"var(--brand)"});
+
+  const short=n=>{const t=n.split(",")[0]; return t.length>22?t.slice(0,21)+"...":t;};
+  const pts=[];
+  RINGS.forEach((ring,ri)=>{
+    const grp=M.actors.filter(o=>scored(o)&&o.scope===ring.k)
+                      .sort((a,b)=>mAvg(b)-mAvg(a));
+    const n=grp.length||1;
+    const off=(ri+1)*0.42;
+    grp.forEach((o,i)=>{
+      const ang=-Math.PI/2 + off + i*2*Math.PI/n;
+      const fit=(aAvg(o)-1)/2;                       // 0 עד 1
+      const rad=ring.rOut-fit*(ring.rOut-ring.rIn);  // התאמה גבוהה, קרוב למרכז
+      pts.push({o, x:CX+rad*Math.cos(ang), y:CY+rad*Math.sin(ang),
+        r:6+mAvg(o)*3.4, txt:short(o.n), ang});
+    });
+  });
+
+  const gB=S("g"), gL=S("g"); s.append(gB,gL);
+  pts.forEach(p=>{
+    const dc=DEVC[p.o.dev]||"var(--ink-3)";
+    s.insertBefore(S("line",{x1:CX,y1:CY,x2:p.x,y2:p.y,stroke:dc,
+      "stroke-width":1,"stroke-opacity":.22}), gB);
+    const c=S("circle",{cx:p.x,cy:p.y,r:p.r,fill:dc,"fill-opacity":.8,
+      stroke:dc,"stroke-width":1.6,"stroke-dasharray":p.o.dev==="r"?"4 3":"none",
+      style:"cursor:pointer"});
+    c.addEventListener("click",()=>open(p.o));
+    const ti=S("title"); ti.textContent=p.o.n+" · "+(M.dev[p.o.dev]?M.dev[p.o.dev].n+" · ":"")+"התאמה "+M.levels[Math.round(aAvg(p.o))]+" · השפעה "+M.levels[Math.round(mAvg(p.o))];
+    c.append(ti); gB.append(c);
+  });
+
+  // labels pushed outward along the spoke, greedy collision avoidance
+  const taken=[];
+  const hits=b=>taken.some(t=>!(b.x1<t.x0||b.x0>t.x1||b.y1<t.y0||b.y0>t.y1));
+  pts.slice().sort((a,b)=>b.r-a.r).forEach(p=>{
+    const w=p.txt.length*6.3+6;
+    for(const d of [p.r+11,p.r+25,p.r+39,-p.r-13]){
+      const cx=Math.max(w/2+6,Math.min(W-w/2-6,p.x+d*Math.cos(p.ang)));
+      const cy=p.y+d*Math.sin(p.ang)+4;
+      const box={x0:cx-w/2,x1:cx+w/2,y0:cy-11,y1:cy+4};
+      if(box.y0<8||box.y1>H-46||hits(box)) continue;
+      taken.push(box);
+      const t=S("text",{x:cx,y:cy,"text-anchor":"middle","font-size":12,"font-weight":600,
+        fill:"var(--ink)",stroke:"var(--surface)","stroke-width":3.6,"paint-order":"stroke",
+        direction:"rtl",style:"cursor:pointer"});
+      t.textContent=p.txt; t.addEventListener("click",()=>open(p.o)); gL.append(t);
+      return;
+    }
+  });
+
+  tx(CX,H-22,"קרוב למרכז, התאמה גבוהה לאומדנים · עיגול גדול, השפעה גבוהה · צבע, הרמזור: ירוק מכוון פיתוח מקומי, כתום פוטנציאל, אדום מקווקו מיקור חוץ",
+     {fs:12.5,fill:"var(--ink-3)"});
+}
+
+function scatter(){
+  const s=$("#quad2"); if(!s) return; s.textContent="";
+  const W=900,H=560,L=64,T=34,Rr=78,Bm=56;
+  const px=v=>L+((v-1)/2)*(W-L-Rr), py=v=>H-Bm-((v-1)/2)*(H-T-Bm);
+  s.append(S("rect",{x:L,y:T,width:W-L-Rr,height:H-T-Bm,fill:"var(--surface-2)","fill-opacity":.7,rx:10}));
+  for(let v=1;v<=3;v+=.5){
+    s.append(S("line",{x1:px(v),y1:T,x2:px(v),y2:H-Bm,stroke:"var(--rule)","stroke-width":v%1?.6:1.2}));
+    s.append(S("line",{x1:L,y1:py(v),x2:W-Rr,y2:py(v),stroke:"var(--rule)","stroke-width":v%1?.6:1.2}));
+  }
+  const tx=(x,y,t,o={})=>{const n=S("text",{x,y,fill:o.fill||"var(--ink-3)","font-size":o.fs||12.5,
+    "text-anchor":o.ta||"middle","font-weight":o.fw||400,direction:"rtl"});n.textContent=t;s.append(n);};
+  [1,2,3].forEach(v=>{tx(px(v),H-Bm+21,M.levels[v]);tx(L-12,py(v)+4,M.levels[v],{ta:"end"});});
+  tx((L+W-Rr)/2,H-13,"התאמה לאומדנים",{fs:14,fw:700,fill:"var(--ink-2)"});
+  const yl=S("text",{fill:"var(--ink-2)","font-size":14,"font-weight":700,"text-anchor":"middle",
+    transform:"translate(18 "+((T+H-Bm)/2)+") rotate(-90)",direction:"rtl"});
+  yl.textContent="השפעה על תמונת הניצחון"; s.append(yl);
+
+  const short=n=>{const t=n.split(",")[0]; return t.length>24?t.slice(0,23)+"...":t;};
+  const pts=M.actors.filter(scored).map(o=>({o,x:px(aAvg(o)),y:py(mAvg(o)),
+    r:7+(o.fields?.length||1)*2.6, txt:short(o.n)}));
+  const grp={};
+  pts.forEach(p=>{const k=Math.round(p.x)+"|"+Math.round(p.y); (grp[k]=grp[k]||[]).push(p);});
+  Object.keys(grp).forEach(k=>{
+    const g=grp[k]; if(g.length<2) return;
+    const d=g[0].r+5;
+    g.forEach((p,i)=>{const t=-Math.PI/2+i*2*Math.PI/g.length;
+      p.x+=d*Math.cos(t); p.y+=d*Math.sin(t);});
+  });
+  const gB=S("g"), gL=S("g"); s.append(gB,gL);
+  pts.forEach(p=>{
+    const dc=DEVC[p.o.dev]||"var(--ink-3)";
+    const c=S("circle",{cx:p.x,cy:p.y,r:p.r,fill:dc,"fill-opacity":.75,
+      stroke:dc,"stroke-width":1.6,"stroke-dasharray":p.o.dev==="r"?"4 3":"none",
+      style:"cursor:pointer"});
+    c.addEventListener("click",()=>open(p.o));
+    const ti=S("title"); ti.textContent=p.o.n+(M.dev[p.o.dev]?" · "+M.dev[p.o.dev].n:""); c.append(ti); gB.append(c);
+  });
+  const taken=[];
+  const hits=b=>taken.some(t=>!(b.x1<t.x0||b.x0>t.x1||b.y1<t.y0||b.y0>t.y1));
+  pts.slice().sort((a,b)=>(mAvg(b.o)+aAvg(b.o))-(mAvg(a.o)+aAvg(a.o))).forEach(p=>{
+    const w=p.txt.length*6.3+6;
+    for(const[dx,dy] of [[0,-p.r-8],[0,p.r+15],[0,-p.r-22],[0,p.r+28],[-w/2-p.r-7,4],[w/2+p.r+7,4]]){
+      const cx=Math.max(L+w/2,Math.min(W-Rr-w/2,p.x+dx)), cy=p.y+dy;
+      const box={x0:cx-w/2,x1:cx+w/2,y0:cy-11,y1:cy+4};
+      if(box.y0<T||box.y1>H-Bm||hits(box)) continue;
+      taken.push(box);
+      const t=S("text",{x:cx,y:cy,"text-anchor":"middle","font-size":12,"font-weight":600,
+        fill:"var(--ink)",stroke:"var(--surface)","stroke-width":3.6,"paint-order":"stroke",
+        direction:"rtl",style:"cursor:pointer"});
+      t.textContent=p.txt; t.addEventListener("click",()=>open(p.o)); gL.append(t);
+      return;
+    }
+  });
+}
+
+function crit(){
+  const dv=$("#critDev");
+  if(dv){dv.textContent="";
+    M.devOrder.forEach(k=>dv.append(el("div",{class:"box",style:"--cc:"+DEVC[k]},
+      el("h3",{},M.dev[k].n),el("p",{},M.dev[k].q))));}
+  const st=$("#devstat");
+  if(st){
+    const c={g:0,o:0,r:0};
+    const list=M.actors.filter(scored);
+    list.forEach(o=>{if(c[o.dev]!=null)c[o.dev]++;});
+    const cg=M.capital.filter(o=>o.dev==="g").length;
+    st.textContent="מתוך "+list.length+" השחקנים הממופים: "
+      +(c.g===1?"אחד מכוון":c.g+" מכוונים")+" לפיתוח מקומי, "
+      +(c.o===1?"אחד בעל":c.o+" בעלי")+" פוטנציאל ו-"
+      +(c.r===1?"אחד":String(c.r))+" במיקור חוץ. מתוך "+M.capital.length+" שותפי ההון, "
+      +(cg===1?"שותף אחד מכוון":cg+" מכוונים")+" לפיתוח מקומי והיתר במיקור חוץ.";
+  }
+  const a=$("#critA"); a.textContent="";
+  M.assess.forEach(x=>a.append(el("div",{class:"box",style:"--cc:var(--brand)"},
+    el("h3",{},x.n),el("p",{},x.q))));
+  const m=$("#critM"); m.textContent="";
+  M.metrics.forEach(x=>m.append(el("div",{class:"box",style:"--cc:"+x.c},
+    el("h3",{},x.n),el("p",{style:"color:var(--ink-3);font-size:13.5px"},x.s),
+    el("p",{style:"margin-top:6px"},x.q))));
+}
+
+const VIEWS=["map","actors","capital","assets","cross"];
+function goto(v,push){
+  if(!VIEWS.includes(v))v="map";
+  $$("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.v===v)));
+  $$(".view").forEach(s=>s.classList.toggle("on",s.id==="view-"+v));
+  if(v==="map")requestAnimationFrame(fit);
+  if(push!==false&&location.hash.slice(1)!==v){try{history.replaceState(null,"","#"+v);}catch(e){}}
+  window.scrollTo(0,0);
+}
+$$("nav.tabs button").forEach(b=>b.onclick=()=>goto(b.dataset.v));
+addEventListener("hashchange",()=>goto(location.hash.slice(1),false));
+
+$("#theme").onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const sysDark=matchMedia("(prefers-color-scheme: dark)").matches;
+  const next=cur?(cur==="dark"?"light":"dark"):(sysDark?"light":"dark");
+  document.documentElement.setAttribute("data-theme",next);
+  try{localStorage.setItem("ks-theme",next);}catch(e){}
+  drawBase(); drawZones(); drawAxis(); drawMarks(); quadrant();
+};
+try{const t=localStorage.getItem("ks-theme"); if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
+
+drawBase(); drawZones(); drawAxis(); legend();
+cards(); capitalCards(); assetGroups(); ctx(); ranklist(); quadrant(); scatter(); crit();
+goto(location.hash.slice(1)||"map",false);
+(function(){
+  const q=new URLSearchParams(location.search).get("open");
+  if(!q)return;
+  const o=find(q,false);
+  if(o)setTimeout(()=>open(o),60);
+})();
+requestAnimationFrame(()=>{fit(); drawMarks();});
+</script>
