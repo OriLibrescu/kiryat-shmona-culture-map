@@ -77,7 +77,7 @@ def main():
     # ב-CSP שחוסם כל פנייה לרשת, והסתרת כתובת הקובץ בעת יציאה לקישור חיצוני.
     web_csp = ('<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; '
                "style-src 'unsafe-inline' https://fonts.googleapis.com; "
-               "font-src https://fonts.gstatic.com data:; script-src 'unsafe-inline'; "
+               "font-src https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'; "
                'img-src data:; base-uri \'none\'; form-action \'none\'">')
     if web_csp not in html:
         raise SystemExit("web CSP meta not found in index.html , build aborted")
