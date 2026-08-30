@@ -375,6 +375,7 @@ function pt(lat,lon){return [PX(lon)-ORIGIN.x, ORIGIN.y-PY(lat)];}
 (function(){
   let x0=1e18,x1=-1e18,y1=-1e18;
   [...M.actors,...M.assets,...M.zones].forEach(o=>{
+    if(o.lat==null||o.lon==null)return;   // שחקן ללא קואורדינטות אינו ממופה
     const x=PX(o.lon), y=PY(o.lat);
     x0=Math.min(x0,x); x1=Math.max(x1,x); y1=Math.max(y1,y);
   });
@@ -465,7 +466,7 @@ function drawMarks(){
   const showS=$("#tAssets").getAttribute("aria-pressed")==="true";
   const list=[];
   if(showS) M.assets.filter(a=>a.lat).forEach(a=>list.push({...a,__asset:true}));
-  if(showA) M.actors.forEach(a=>list.push(a));
+  if(showA) M.actors.filter(a=>a.lat!=null).forEach(a=>list.push(a));
   const seen=new Map();
   list.forEach(o=>{
     let[x,y]=pt(o.lat,o.lon);
@@ -743,7 +744,7 @@ function open(o){
         onclick:()=>open(a)},a.n)))));
   }
   if(kind==="actor"&&scored(o)) b.append(el("section",{},scoreBlock(o)));
-  if(kind!=="capital") b.append(el("section",{},el("button",{class:"ghost",
+  if(kind!=="capital"&&o.lat!=null) b.append(el("section",{},el("button",{class:"ghost",
     style:"align-self:flex-start",onclick:()=>{close();flyTo(o);}},"הצג במפה")));
   panel.append(head,b);
   if(!panel.classList.contains("on")) lastFocus=document.activeElement;
@@ -810,7 +811,7 @@ function ctx(){
     el("div",{},el("b",{class:"tnum"},String(M.actors.length)),el("span",{},"שחקנים")),
     el("div",{},el("b",{class:"tnum"},String(M.assets.filter(a=>a.lat).length)),el("span",{},"משאבים על המפה"))));
   M.zones.forEach(z=>{
-    const acts=M.actors.filter(a=>a.zone===z.id), asts=M.assets.filter(a=>a.zone===z.id&&a.lat);
+    const acts=M.actors.filter(a=>a.zone===z.id&&a.lat!=null), asts=M.assets.filter(a=>a.zone===z.id&&a.lat);
     c.append(el("div",{class:"zh"},
       el("span",{class:"sw",style:"background:"+ZC[z.id]}),
       el("b",{style:"color:"+ZC[z.id]},z.n)));
