@@ -7,13 +7,12 @@
 
 ## האתר
 
-האתר מוגש ב-Firebase Hosting (פרויקט `iicp-ks-culture-map-714e8`, אתר `iicp-ks-culture-map`):
+האתר מוגש ב-GitHub Pages ישירות מענף `main`:
 
-* https://iicp-ks-culture-map.web.app
-* https://kiryat-shmona-agents.iicp.org.il (הדומיין של המכון)
+* https://orilibrescu.github.io/kiryat-shmona-culture-map/
 
-פריסה: `firebase deploy --only hosting` מתיקיית הריפו (או `python deploy_site.py` מתיקיית
-העבודה ב-OneDrive, שמעתיק, דוחף ל-git ופורס). הריפו ב-GitHub משמש לניהול גרסאות בלבד.
+כל דחיפה (push) מעדכנת את האתר תוך כדקה. שים לב: Pages בחשבון חינמי מחייב שהריפו
+יישאר ציבורי; הסבה לפרטי מורידה את האתר מהאוויר.
 
 האתר מסומן `noindex` ו-`robots.txt` חוסם סריקה: הקישור מיועד להפצה ישירה לבעלי העניין,
 לא לאיתור במנועי חיפוש. כדי לפתוח את האתר לאינדוקס יש למחוק את `robots.txt`
