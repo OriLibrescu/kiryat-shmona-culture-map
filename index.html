@@ -333,7 +333,7 @@ select.sel{padding:6px 12px; border:1px solid var(--rule); border-radius:999px;
 
   <hr class="rule">
   <h2 class="sec">מפת המיקום האסטרטגי</h2>
-  <p class="secnote">שלושה מעגלים לפי היקף הפעילות: עירוני, אזורי וארצי. ככל שגוף מתאים יותר לאומדנים כך הוא קרוב יותר למרכז, גודל העיגול הוא ההשפעה על תמונת הניצחון, והצבע הוא הרמזור: הכוונה לפיתוח מקומי.</p>
+  <p class="secnote">שלושה מעגלים לפי היקף הפעילות: עירוני, אזורי וארצי. עיגול הוא שחקן: ככל שהוא מתאים יותר לאומדנים כך הוא קרוב יותר למרכז, וגודלו הוא ההשפעה על תמונת הניצחון. מעוין הוא שותף הון, המוצג במעגל פעילותו. הצבע הוא הרמזור: הכוונה לפיתוח מקומי.</p>
   <div class="quadbox"><svg class="quad" id="quad" viewBox="0 0 1000 830"></svg></div>
 
   <hr class="rule">
@@ -931,16 +931,26 @@ function quadrant(){
 
   const pts=[];
   RINGS.forEach((ring,ri)=>{
-    const grp=M.actors.filter(o=>scored(o)&&o.scope===ring.k)
-                      .sort((a,b)=>mAvg(b)-mAvg(a));
-    const n=grp.length||1;
+    const items=[
+      ...M.actors.filter(o=>scored(o)&&o.scope===ring.k)
+                 .sort((a,b)=>mAvg(b)-mAvg(a)).map(o=>({kind:"a",o})),
+      ...M.capital.filter(o=>(o.scope||"ארצי")===ring.k).map(o=>({kind:"c",o}))
+    ];
+    const n=items.length||1;
     const off=(ri+1)*0.42;
-    grp.forEach((o,i)=>{
+    items.forEach((it,i)=>{
       const ang=-Math.PI/2 + off + i*2*Math.PI/n;
-      const fit=(aAvg(o)-1)/2;                       // 0 עד 1
-      const rad=ring.rOut-fit*(ring.rOut-ring.rIn);  // התאמה גבוהה, קרוב למרכז
-      pts.push({o, x:CX+rad*Math.cos(ang), y:CY+rad*Math.sin(ang),
-        r:6+mAvg(o)*3.4, lines:splitLabel(o.n), ang});
+      let rad,r;
+      if(it.kind==="a"){
+        const fit=(aAvg(it.o)-1)/2;                    // 0 עד 1
+        rad=ring.rOut-fit*(ring.rOut-ring.rIn);        // התאמה גבוהה, קרוב למרכז
+        r=6+mAvg(it.o)*3.4;
+      }else{
+        rad=ring.rOut-0.5*(ring.rOut-ring.rIn);        // שותף הון: אמצע מעגל פעילותו
+        r=10;
+      }
+      pts.push({o:it.o, kind:it.kind, x:CX+rad*Math.cos(ang), y:CY+rad*Math.sin(ang),
+        r, lines:splitLabel(it.o.n), ang});
     });
   });
 
@@ -949,19 +959,32 @@ function quadrant(){
     const dc=DEVC[p.o.dev]||"var(--ink-3)";
     s.insertBefore(S("line",{x1:CX,y1:CY,x2:p.x,y2:p.y,stroke:dc,
       "stroke-width":1,"stroke-opacity":.22}), gB);
-    const c=S("circle",{cx:p.x,cy:p.y,r:p.r,fill:dc,"fill-opacity":.8,
-      stroke:dc,"stroke-width":1.6,"stroke-dasharray":p.o.dev==="r"?"4 3":"none",
-      style:"cursor:pointer"});
+    let c;
+    if(p.kind==="c"){
+      c=S("rect",{x:p.x-8,y:p.y-8,width:16,height:16,
+        transform:"rotate(45 "+p.x+" "+p.y+")",fill:dc,"fill-opacity":.8,
+        stroke:dc,"stroke-width":1.6,"stroke-dasharray":p.o.dev==="r"?"4 3":"none",
+        style:"cursor:pointer"});
+    }else{
+      c=S("circle",{cx:p.x,cy:p.y,r:p.r,fill:dc,"fill-opacity":.8,
+        stroke:dc,"stroke-width":1.6,"stroke-dasharray":p.o.dev==="r"?"4 3":"none",
+        style:"cursor:pointer"});
+    }
     c.addEventListener("click",()=>open(p.o));
-    const ti=S("title"); ti.textContent=p.o.n+" · "+(M.dev[p.o.dev]?M.dev[p.o.dev].n+" · ":"")+"התאמה "+M.levels[Math.round(aAvg(p.o))]+" · השפעה "+M.levels[Math.round(mAvg(p.o))];
+    const ti=S("title");
+    ti.textContent=p.kind==="c"
+      ? p.o.n+" · שותף הון"+(M.dev[p.o.dev]?" · "+M.dev[p.o.dev].n:"")
+      : p.o.n+" · "+(M.dev[p.o.dev]?M.dev[p.o.dev].n+" · ":"")+"התאמה "+M.levels[Math.round(aAvg(p.o))]+" · השפעה "+M.levels[Math.round(mAvg(p.o))];
     c.append(ti); gB.append(c);
   });
 
   const blocks=[{x0:CX-58,x1:CX+58,y0:CY-42,y1:CY+42}];
   RINGS.forEach(r=>blocks.push({x0:CX-42,x1:CX+42,y0:CY-r.rOut+2,y1:CY-r.rOut+20}));
-  placeAllLabels(s,pts,blocks,{x0:6,x1:W-6,y0:16,y1:H-40});
+  placeAllLabels(s,pts,blocks,{x0:6,x1:W-6,y0:16,y1:H-52});
 
-  tx(CX,H-22,"קרוב למרכז, התאמה גבוהה לאומדנים · עיגול גדול, השפעה גבוהה · צבע, הרמזור: ירוק מכוון פיתוח מקומי, כתום פוטנציאל, אדום מקווקו מיקור חוץ",
+  tx(CX,H-34,"עיגול, שחקן: קרוב למרכז התאמה גבוהה לאומדנים, עיגול גדול השפעה גבוהה · מעוין, שותף הון במעגל פעילותו",
+     {fs:12.5,fill:"var(--ink-3)"});
+  tx(CX,H-16,"צבע, הרמזור: ירוק מכוון פיתוח מקומי · כתום פוטנציאל · אדום מקווקו, מיקור חוץ",
      {fs:12.5,fill:"var(--ink-3)"});
 }
 
