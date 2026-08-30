@@ -334,7 +334,7 @@ select.sel{padding:6px 12px; border:1px solid var(--rule); border-radius:999px;
   <hr class="rule">
   <h2 class="sec">מפת המיקום האסטרטגי</h2>
   <p class="secnote">שלושה מעגלים לפי היקף הפעילות: עירוני, אזורי וארצי. ככל שגוף מתאים יותר לאומדנים כך הוא קרוב יותר למרכז, גודל העיגול הוא ההשפעה על תמונת הניצחון, והצבע הוא הרמזור: הכוונה לפיתוח מקומי.</p>
-  <div class="quadbox"><svg class="quad" id="quad" viewBox="0 0 900 660"></svg></div>
+  <div class="quadbox"><svg class="quad" id="quad" viewBox="0 0 1000 830"></svg></div>
 
   <hr class="rule">
   <h2 class="sec">התאמה מול השפעה</h2>
@@ -848,13 +848,68 @@ function ranklist(){
   });
 }
 
+/* ---- תוויות ללא חפיפה: מנוע הצבה משותף לשני התרשימים ----
+   כל נקודה מקבלת תווית תמיד. שם ארוך נשבר לשתי שורות במקום קיצוץ.
+   התוויות עוקפות את העיגולים, את כיתובי הטבעות ואת המרכז; אם אין
+   משבצת פנויה נבחרת המשבצת עם החפיפה הקטנה ביותר, לא מוותרים. */
+function splitLabel(n){
+  let t=n.split(",")[0].trim();
+  const cut=t.replace(/ קריית שמונה$/,"");   // הכל ממילא בעיר; השם המלא בפרופיל
+  if(cut.length>=6) t=cut;
+  if(t.length<=18) return [t];
+  let best=-1,bestD=1e9;
+  for(let i=1;i<t.length-1;i++) if(t[i]===" "){const d=Math.abs(i-t.length/2); if(d<bestD){bestD=d;best=i;}}
+  if(best<0) return [t];
+  return [t.slice(0,best),t.slice(best+1)];
+}
+function placeAllLabels(s,pts,blocks,bounds){
+  const obs=blocks.map(b=>({b,owner:-1}));
+  pts.forEach((p,i)=>obs.push({b:{x0:p.x-p.r-2,x1:p.x+p.r+2,y0:p.y-p.r-2,y1:p.y+p.r+2},owner:i}));
+  const ov=(a,b)=>Math.max(0,Math.min(a.x1,b.x1)-Math.max(a.x0,b.x0))*
+                  Math.max(0,Math.min(a.y1,b.y1)-Math.max(a.y0,b.y0));
+  pts.map((p,i)=>i).sort((a,b)=>pts[b].r-pts[a].r).forEach(i=>{
+    const p=pts[i], lines=p.lines;
+    const bw=Math.max(...lines.map(l=>l.length))*6.3+8, bh=lines.length>1?31:15;
+    const ang=p.ang!=null?p.ang:-Math.PI/2;
+    const cands=[];
+    [p.r+13,p.r+27,p.r+42,p.r+58,-(p.r+16),-(p.r+31)].forEach(d=>
+      cands.push([p.x+d*Math.cos(ang),p.y+d*Math.sin(ang)+4]));
+    cands.push([p.x,p.y-p.r-11],[p.x,p.y+p.r+17],
+      [p.x+p.r+9+bw/2,p.y+4],[p.x-p.r-9-bw/2,p.y+4],
+      [p.x+p.r+8+bw/2,p.y-p.r-6],[p.x-p.r-8-bw/2,p.y-p.r-6],
+      [p.x+p.r+8+bw/2,p.y+p.r+14],[p.x-p.r-8-bw/2,p.y+p.r+14],
+      [p.x,p.y-p.r-27],[p.x,p.y+p.r+33]);
+    let best=null,bestCost=Infinity;
+    for(const[rx,ry]of cands){
+      const cx=Math.max(bounds.x0+bw/2,Math.min(bounds.x1-bw/2,rx));
+      const cy=Math.max(bounds.y0+11,Math.min(bounds.y1-(bh-11),ry));
+      const box={x0:cx-bw/2,x1:cx+bw/2,y0:cy-11,y1:cy-11+bh};
+      let cost=Math.abs(cx-rx)+Math.abs(cy-ry);
+      for(const o of obs){ if(o.owner===i)continue; cost+=ov(box,o.b); }
+      if(cost<bestCost){bestCost=cost;best={cx,cy,box};}
+      if(cost===0)break;
+    }
+    obs.push({b:best.box,owner:-1});
+    const t=S("text",{x:best.cx,y:best.cy,"text-anchor":"middle","font-size":12,"font-weight":600,
+      fill:"var(--ink)",stroke:"var(--surface)","stroke-width":3.6,"paint-order":"stroke",
+      direction:"rtl",style:"cursor:pointer"});
+    if(lines.length>1){
+      const t1=S("tspan",{x:best.cx}); t1.textContent=lines[0];
+      const t2=S("tspan",{x:best.cx,dy:14}); t2.textContent=lines[1];
+      t.append(t1,t2);
+    } else t.textContent=lines[0];
+    t.addEventListener("click",()=>open(p.o));
+    s.append(t);
+  });
+}
+
 function quadrant(){
   const s=$("#quad"); s.textContent="";
-  const W=900,H=660,CX=450,CY=318;
+  const W=1000,H=830,CX=500,CY=400;
   const RINGS=[
-    {k:"עירוני", rIn:34,  rOut:104, lbl:"מעגל עירוני"},
-    {k:"אזורי",  rIn:118, rOut:196, lbl:"מעגל אזורי"},
-    {k:"ארצי",   rIn:210, rOut:288, lbl:"מעגל ארצי"}
+    {k:"עירוני", rIn:42,  rOut:158, lbl:"מעגל עירוני"},
+    {k:"אזורי",  rIn:172, rOut:262, lbl:"מעגל אזורי"},
+    {k:"ארצי",   rIn:276, rOut:366, lbl:"מעגל ארצי"}
   ];
   const tx=(x,y,t,o={})=>{const n=S("text",{x,y,fill:o.fill||"var(--ink-3)","font-size":o.fs||12.5,
     "text-anchor":o.ta||"middle","font-weight":o.fw||400,direction:"rtl"});
@@ -874,7 +929,6 @@ function quadrant(){
   tx(CX,CY-3,"המסגרת",{fs:12.5,fw:700,fill:"var(--brand)"});
   tx(CX,CY+13,"העירונית",{fs:12.5,fw:700,fill:"var(--brand)"});
 
-  const short=n=>{const t=n.split(",")[0]; return t.length>22?t.slice(0,21)+"...":t;};
   const pts=[];
   RINGS.forEach((ring,ri)=>{
     const grp=M.actors.filter(o=>scored(o)&&o.scope===ring.k)
@@ -886,7 +940,7 @@ function quadrant(){
       const fit=(aAvg(o)-1)/2;                       // 0 עד 1
       const rad=ring.rOut-fit*(ring.rOut-ring.rIn);  // התאמה גבוהה, קרוב למרכז
       pts.push({o, x:CX+rad*Math.cos(ang), y:CY+rad*Math.sin(ang),
-        r:6+mAvg(o)*3.4, txt:short(o.n), ang});
+        r:6+mAvg(o)*3.4, lines:splitLabel(o.n), ang});
     });
   });
 
@@ -903,24 +957,9 @@ function quadrant(){
     c.append(ti); gB.append(c);
   });
 
-  // labels pushed outward along the spoke, greedy collision avoidance
-  const taken=[];
-  const hits=b=>taken.some(t=>!(b.x1<t.x0||b.x0>t.x1||b.y1<t.y0||b.y0>t.y1));
-  pts.slice().sort((a,b)=>b.r-a.r).forEach(p=>{
-    const w=p.txt.length*6.3+6;
-    for(const d of [p.r+11,p.r+25,p.r+39,-p.r-13]){
-      const cx=Math.max(w/2+6,Math.min(W-w/2-6,p.x+d*Math.cos(p.ang)));
-      const cy=p.y+d*Math.sin(p.ang)+4;
-      const box={x0:cx-w/2,x1:cx+w/2,y0:cy-11,y1:cy+4};
-      if(box.y0<8||box.y1>H-46||hits(box)) continue;
-      taken.push(box);
-      const t=S("text",{x:cx,y:cy,"text-anchor":"middle","font-size":12,"font-weight":600,
-        fill:"var(--ink)",stroke:"var(--surface)","stroke-width":3.6,"paint-order":"stroke",
-        direction:"rtl",style:"cursor:pointer"});
-      t.textContent=p.txt; t.addEventListener("click",()=>open(p.o)); gL.append(t);
-      return;
-    }
-  });
+  const blocks=[{x0:CX-58,x1:CX+58,y0:CY-42,y1:CY+42}];
+  RINGS.forEach(r=>blocks.push({x0:CX-42,x1:CX+42,y0:CY-r.rOut+2,y1:CY-r.rOut+20}));
+  placeAllLabels(s,pts,blocks,{x0:6,x1:W-6,y0:16,y1:H-40});
 
   tx(CX,H-22,"קרוב למרכז, התאמה גבוהה לאומדנים · עיגול גדול, השפעה גבוהה · צבע, הרמזור: ירוק מכוון פיתוח מקומי, כתום פוטנציאל, אדום מקווקו מיקור חוץ",
      {fs:12.5,fill:"var(--ink-3)"});
@@ -943,9 +982,8 @@ function scatter(){
     transform:"translate(18 "+((T+H-Bm)/2)+") rotate(-90)",direction:"rtl"});
   yl.textContent="השפעה על תמונת הניצחון"; s.append(yl);
 
-  const short=n=>{const t=n.split(",")[0]; return t.length>24?t.slice(0,23)+"...":t;};
   const pts=M.actors.filter(scored).map(o=>({o,x:px(aAvg(o)),y:py(mAvg(o)),
-    r:7+(o.fields?.length||1)*2.6, txt:short(o.n)}));
+    r:7+(o.fields?.length||1)*2.6, lines:splitLabel(o.n)}));
   const grp={};
   pts.forEach(p=>{const k=Math.round(p.x)+"|"+Math.round(p.y); (grp[k]=grp[k]||[]).push(p);});
   Object.keys(grp).forEach(k=>{
@@ -963,22 +1001,7 @@ function scatter(){
     c.addEventListener("click",()=>open(p.o));
     const ti=S("title"); ti.textContent=p.o.n+(M.dev[p.o.dev]?" · "+M.dev[p.o.dev].n:""); c.append(ti); gB.append(c);
   });
-  const taken=[];
-  const hits=b=>taken.some(t=>!(b.x1<t.x0||b.x0>t.x1||b.y1<t.y0||b.y0>t.y1));
-  pts.slice().sort((a,b)=>(mAvg(b.o)+aAvg(b.o))-(mAvg(a.o)+aAvg(a.o))).forEach(p=>{
-    const w=p.txt.length*6.3+6;
-    for(const[dx,dy] of [[0,-p.r-8],[0,p.r+15],[0,-p.r-22],[0,p.r+28],[-w/2-p.r-7,4],[w/2+p.r+7,4]]){
-      const cx=Math.max(L+w/2,Math.min(W-Rr-w/2,p.x+dx)), cy=p.y+dy;
-      const box={x0:cx-w/2,x1:cx+w/2,y0:cy-11,y1:cy+4};
-      if(box.y0<T||box.y1>H-Bm||hits(box)) continue;
-      taken.push(box);
-      const t=S("text",{x:cx,y:cy,"text-anchor":"middle","font-size":12,"font-weight":600,
-        fill:"var(--ink)",stroke:"var(--surface)","stroke-width":3.6,"paint-order":"stroke",
-        direction:"rtl",style:"cursor:pointer"});
-      t.textContent=p.txt; t.addEventListener("click",()=>open(p.o)); gL.append(t);
-      return;
-    }
-  });
+  placeAllLabels(s,pts,[],{x0:L+2,x1:W-Rr-2,y0:T+4,y1:H-Bm-4});
 }
 
 function crit(){
